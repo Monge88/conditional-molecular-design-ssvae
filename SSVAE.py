@@ -235,8 +235,9 @@ class Model(object):
 
 
     def _obj_L(self):
-
+        # Reconstruction error p(x|y,z) in the paper
         L_log_lik = - tf.reduce_sum(self.cross_entropy(tf.layers.flatten(self.x_L), tf.layers.flatten(self.x_L_recon)), 1)
+        # 
         L_log_prior_y = self.noniso_logpdf(self.y_L)
         L_KLD_z = self.iso_KLD(self.z_L_mu, self.z_L_lsgms)
 
